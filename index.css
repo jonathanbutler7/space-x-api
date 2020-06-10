@@ -1,3 +1,29 @@
+@font-face {
+    font-family: "serif";
+    src: url(/Butler_and_ButlerStencil/Butler_Webfont/Butler-Medium.woff);
+}
+
+@font-face {
+    font-family: "sans";
+    src: url(/glacialindifference/GlacialIndifference-Bold.otf)
+}
+
+h1 {
+    font-family: "serif";
+}
+
+p, h2, h3 {
+    font-family: "sans";
+}
+
+#body {
+    background-image: url(https://apod.nasa.gov/apod/image/2006/OrionMountains_Tabbush_960.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1500px;
+    background-position-y: inherit;
+}
+
 .start-card {
     border: 2px gray solid;
     border-radius: 5px;
@@ -7,8 +33,10 @@
     padding-bottom: 25px;
     max-width: 500px;
     margin: 30px auto 30px auto;
-    background-color: white;
+    /* background-color: white; */
     box-shadow: 0 5px 15px -5px rgba(0,0,0,1); 
+    background-color: dimgray;
+    color: white;
 }
 
 .select-flight {
@@ -19,9 +47,18 @@
     display: none;
 }
 
-h3, p, img {
+h3, p, img, iframe {
     margin: 0 auto 15px auto;
 }
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    color: white;
+} 
 
 .results-card {
     display: flex;
@@ -31,10 +68,29 @@ h3, p, img {
     border-radius: 5px;
     max-width: 500px;
     margin: 30px auto 30px auto;
+    margin-bottom: 100px;
+    background-color: dimgray;
+    color: white;
 }
 
 img {
     margin: 0 auto 15px auto;
     width: 200px;
     /* justify-content: center; */
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: darkgray;
+    color: white;
+    text-align: center;
+    
+}
+
+.footer > p {
+    font-size: 0.75em;
+    font-family: serif;
 }

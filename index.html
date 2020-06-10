@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     
 </head>
-<body>
+<body id="body">
     <main>
         
         <div class="start-card">
@@ -35,10 +35,20 @@
         </div>
 
         <div class="results-container hidden">
-            <section></section>
+            <div class="results-card">
+                    <div id="card-info"></div>
+                    <iframe src="" frameborder="0" id="card-video" width="340" height="220" autoplay></iframe>
+                    <!-- <div id="ytplayer">
+                    </div> -->
+            </div>
         </div>
+        
 
     </main>
+    <footer class="footer">
+        <p></p>
+    </footer>
+    
 
 <script src="index.js"></script>
 </body>
