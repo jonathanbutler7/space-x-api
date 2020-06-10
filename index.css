@@ -47,6 +47,11 @@ p, h2, h3 {
     display: none;
 }
 
+iframe {
+    border-radius: 5px;
+    border: black 2px solid;
+}
+
 h3, p, img, iframe {
     margin: 0 auto 15px auto;
 }
