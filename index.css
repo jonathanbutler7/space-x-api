@@ -1,11 +1,11 @@
 @font-face {
     font-family: "serif";
-    src: url(/Butler_and_ButlerStencil/Butler_Webfont/Butler-Medium.woff);
+    src: url(Butler_and_ButlerStencil/Butler_Webfont/Butler-Medium.woff);
 }
 
 @font-face {
     font-family: "sans";
-    src: url(/glacialindifference/GlacialIndifference-Bold.otf)
+    src: url(glacialindifference/GlacialIndifference-Bold.otf)
 }
 
 h1 {
