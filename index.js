@@ -1,4 +1,4 @@
-var player
+// var player
 
 function getList() {
     fetch("https://api.spacexdata.com/v3/launches/")
@@ -17,12 +17,12 @@ function backgroundImage(result) {
     appendFooter(result)
     // let url = result.url
     
-    // console.log(url)
-    // $('body').append(
-    //     `<img style=
-    //         backgroundImage: "url(${url})" class="background-image" src="${url}">    
-    //     `
-    // );
+    let nasaImage = `background-image: url(https://apod.nasa.gov/apod/image/2006/OrionMountains_Tabbush_960.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1500px;
+    background-position-y: inherit;`
+    $('#body').attr('style', nasaImage);
 }
 
 function appendFooter(result) {
@@ -81,56 +81,56 @@ function getFlightStats(dataSet) {
 
  // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
-function onYouTubeIframeAPIReady() {
-    // var player;
-    player = new YT.Player('ytplayer', {
-        height: '390',
-        width: '640',
-        videoId: 'nxSxgBKlYws',
+// function onYouTubeIframeAPIReady() {
+//     // var player;
+//     player = new YT.Player('ytplayer', {
+//         height: '390',
+//         width: '640',
+//         videoId: 'nxSxgBKlYws',
         
-    events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-    }
-    });
-    // console.log("Player state is ", player.getPlayerState())
-    // function onPlayerReady(event) {
-    //     event.target.playVideo();
-    //   }
-    function onPlayerReady(event) {
-        var embedCode = event.target.getVideoEmbedCode();
-        event.target.playVideo();
-        if (document.getElementById('embed-code')) {
-          document.getElementById('embed-code').innerHTML = embedCode;
-        }
-      }
+//     events: {
+//         'onReady': onPlayerReady,
+//         'onStateChange': onPlayerStateChange
+//     }
+//     });
+//     // console.log("Player state is ", player.getPlayerState())
+//     // function onPlayerReady(event) {
+//     //     event.target.playVideo();
+//     //   }
+//     function onPlayerReady(event) {
+//         var embedCode = event.target.getVideoEmbedCode();
+//         event.target.playVideo();
+//         if (document.getElementById('embed-code')) {
+//           document.getElementById('embed-code').innerHTML = embedCode;
+//         }
+//       }
   
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
-      function stopVideo() {
-        player.stopVideo();
-      }
-}
+//       // 5. The API calls this function when the player's state changes.
+//       //    The function indicates that when playing a video (state=1),
+//       //    the player should play for six seconds and then stop.
+//       var done = false;
+//       function onPlayerStateChange(event) {
+//         if (event.data == YT.PlayerState.PLAYING && !done) {
+//           setTimeout(stopVideo, 6000);
+//           done = true;
+//         }
+//       }
+//       function stopVideo() {
+//         player.stopVideo();
+//       }
+// }
 
-function createiFrame() {
-    // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
+// function createiFrame() {
+//     // 2. This code loads the IFrame Player API code asynchronously.
+//     var tag = document.createElement('script');
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//     tag.src = "https://www.youtube.com/iframe_api";
+//     var firstScriptTag = document.getElementsByTagName('script')[0];
+//     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // 4. The API will call this function when the video player is ready.
+//     // 4. The API will call this function when the video player is ready.
     
-}
+// }
 $(getList())
 $(fetchNasaImage())
-$(createiFrame())
+// $(createiFrame())
