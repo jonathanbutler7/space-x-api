@@ -101,6 +101,8 @@ img {
         width: 390px;
         height: 290px;
         margin-bottom: 30px;
+        border-radius: 5px;
+        border: black 2px solid;
     }
 
     .start-card {
