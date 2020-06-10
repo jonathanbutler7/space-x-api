@@ -1,0 +1,40 @@
+.start-card {
+    border: 2px gray solid;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 25px;
+    max-width: 500px;
+    margin: 30px auto 30px auto;
+    background-color: white;
+    box-shadow: 0 5px 15px -5px rgba(0,0,0,1); 
+}
+
+.select-flight {
+    margin-bottom: 10px
+}
+
+.hidden {
+    display: none;
+}
+
+h3, p, img {
+    margin: 0 auto 15px auto;
+}
+
+.results-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px gray solid;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 30px auto 30px auto;
+}
+
+img {
+    margin: 0 auto 15px auto;
+    width: 200px;
+    /* justify-content: center; */
+}
