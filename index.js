@@ -14,13 +14,14 @@ function fetchNasaImage() {
 }
 
 function backgroundImage(result) {
-    appendFooter(result)
-    // let url = result.url
+    let picURL = result.url
     
-    let nasaImage = `background-image: url(https://apod.nasa.gov/apod/image/2006/OrionMountains_Tabbush_960.jpg);
+    appendFooter(result)
+    
+    let nasaImage = `background-image: url(${picURL});
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 1500px;
+    background-size: 1800px;
     background-position-y: inherit;`
     $('#body').attr('style', nasaImage);
 }
@@ -55,9 +56,8 @@ function getFlightStats(dataSet) {
         // let successDetail = flightInfo.launch_failure_details.reason
         let videoLink = flightInfo.links.video_link
         videoLink = videoLink.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
-        console.log(videoLink)
         let date = flightInfo.launch_date_local
-        let location = flightInfo.launch_site.site_name
+        let location = flightInfo.launch_site.site_name_long
         
         let html = `
             <h2>Flight no. ${flightNum}</h2>
@@ -65,11 +65,9 @@ function getFlightStats(dataSet) {
             <p>Rocket name: ${rocketName}</p>
             <p>Mission success: ${launchSuccess}</p>
             <img src="${image}" alt="${image}">
-            <p>Launch location: ${location}</p>
+            <p>Location: ${location}</p>
         `
-        // console.log(videoLinkId)
-        // onYouTubeIframeAPIReady(videoLinkId)
-        // player.loadVideoById(videoLinkId, 5, "small")
+
         $('#card-video').attr('src', videoLink);
         $('.results-container').removeClass('hidden')
         $('#card-info').empty()
@@ -77,60 +75,5 @@ function getFlightStats(dataSet) {
     });
 }
 
-
-
- // 3. This function creates an <iframe> (and YouTube player)
-    //    after the API code downloads.
-// function onYouTubeIframeAPIReady() {
-//     // var player;
-//     player = new YT.Player('ytplayer', {
-//         height: '390',
-//         width: '640',
-//         videoId: 'nxSxgBKlYws',
-        
-//     events: {
-//         'onReady': onPlayerReady,
-//         'onStateChange': onPlayerStateChange
-//     }
-//     });
-//     // console.log("Player state is ", player.getPlayerState())
-//     // function onPlayerReady(event) {
-//     //     event.target.playVideo();
-//     //   }
-//     function onPlayerReady(event) {
-//         var embedCode = event.target.getVideoEmbedCode();
-//         event.target.playVideo();
-//         if (document.getElementById('embed-code')) {
-//           document.getElementById('embed-code').innerHTML = embedCode;
-//         }
-//       }
-  
-//       // 5. The API calls this function when the player's state changes.
-//       //    The function indicates that when playing a video (state=1),
-//       //    the player should play for six seconds and then stop.
-//       var done = false;
-//       function onPlayerStateChange(event) {
-//         if (event.data == YT.PlayerState.PLAYING && !done) {
-//           setTimeout(stopVideo, 6000);
-//           done = true;
-//         }
-//       }
-//       function stopVideo() {
-//         player.stopVideo();
-//       }
-// }
-
-// function createiFrame() {
-//     // 2. This code loads the IFrame Player API code asynchronously.
-//     var tag = document.createElement('script');
-
-//     tag.src = "https://www.youtube.com/iframe_api";
-//     var firstScriptTag = document.getElementsByTagName('script')[0];
-//     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-//     // 4. The API will call this function when the video player is ready.
-    
-// }
 $(getList())
 $(fetchNasaImage())
-// $(createiFrame())

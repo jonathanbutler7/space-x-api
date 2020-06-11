@@ -16,14 +16,6 @@ p, h2, h3 {
     font-family: "sans";
 }
 
-/* #body {
-    background-image: url(https://apod.nasa.gov/apod/image/2006/OrionMountains_Tabbush_960.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 1500px;
-    background-position-y: inherit;
-} */
-
 .start-card {
     border: 2px black solid;
     border-radius: 5px;
