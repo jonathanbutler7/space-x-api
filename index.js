@@ -53,10 +53,8 @@ function getFlightStats(dataSet) {
         let rocketName = flightInfo.rocket.rocket_name
         let image = flightInfo.links.mission_patch
         let launchSuccess = flightInfo.launch_success
-        // let successDetail = flightInfo.launch_failure_details.reason
-        let videoLink = flightInfo.links.video_link
-        videoLink = videoLink.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/')
-        let date = flightInfo.launch_date_local
+        let videoId = flightInfo.links.youtube_id
+        videoId = 'https://www.youtube.com/embed/' + videoId
         let location = flightInfo.launch_site.site_name_long
         
         let html = `
@@ -68,7 +66,7 @@ function getFlightStats(dataSet) {
             <p>Location: ${location}</p>
         `
 
-        $('#card-video').attr('src', videoLink);
+        $('#card-video').attr('src', videoId);
         $('.results-container').removeClass('hidden')
         $('#card-info').empty()
         $('#card-info').append(html)
