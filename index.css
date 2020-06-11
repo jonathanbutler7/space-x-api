@@ -112,3 +112,15 @@ img {
         margin-bottom: 75px;
     }
 }
+
+.error-message {
+    color: darkred;
+}
+
+.info-block > p, h3 {
+    margin: 2px;
+}
+
+.info-block {
+    margin-bottom: 15px;
+}

@@ -16,22 +16,27 @@ function fetchNasaImage() {
 function backgroundImage(result) {
     let picURL = result.url
     
-    appendFooter(result)
-    
     let nasaImage = `background-image: url(${picURL});
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1800px;
     background-position-y: inherit;`
-    $('#body').attr('style', nasaImage);
+    $('#body').attr('style', nasaImage)
+    appendFooter(result)
 }
 
 function appendFooter(result) {
     let title = result.title
     let photographer = result.copyright
+    if (photographer === undefined) {
+        $('footer').append(
+            `<p><i>${title}</i> provided by <a href="http://apod.nasa.gov/apod/astropix.html" target=blank>Astronomy Picture of the Day</a></p>`
+        )
+    } else {
     $('footer').append(
         `<p>"${title}" by ${photographer}, provided by <a href="http://apod.nasa.gov/apod/astropix.html" target=blank>Astronomy Picture of the Day</a></p>`
     )
+    }
 }
 
 function populateList(result) {
@@ -47,6 +52,7 @@ function populateList(result) {
 function getFlightStats(dataSet) {
     $('#select-flight').change(function() {
         let flightSelect = $('#select-flight').val()
+
         let flightInfo = dataSet[flightSelect - 1]
         let flightNum = flightInfo.flight_number
         let missionName = flightInfo.mission_name
@@ -56,20 +62,36 @@ function getFlightStats(dataSet) {
         let videoId = flightInfo.links.youtube_id
         videoId = 'https://www.youtube.com/embed/' + videoId
         let location = flightInfo.launch_site.site_name_long
-        
-        let html = `
+        if (flightSelect < 96) {
+
+        html = `
             <h2>Flight no. ${flightNum}</h2>
+            <div class="info-block">
             <h3>Mission: ${missionName}</h3>
             <p>Rocket name: ${rocketName}</p>
             <p>Mission success: ${launchSuccess}</p>
+            </div>
             <img src="${image}" alt="${image}">
             <p>Location: ${location}</p>
         `
-
         $('#card-video').attr('src', videoId);
-        $('.results-container').removeClass('hidden')
         $('#card-info').empty()
+        $('#card-video').removeClass('hidden')
+        } else {
+            html = 
+            `<h2>Flight no. ${flightNum}</h2>
+            <h3>Mission: ${missionName}</h3>
+            <p>Rocket name: ${rocketName}</p>
+            <p class="error-message">Complete info not available</p>
+            `
+            $('#card-info').empty()
+            $('#card-video').addClass('hidden')
+        }
+        
+        $('.results-container').removeClass('hidden')
+        
         $('#card-info').append(html)
+        
     });
 }
 
