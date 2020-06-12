@@ -76,7 +76,8 @@ img {
 
 .select-flight {
     margin-bottom: 10px;
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 #select-flight {
@@ -143,7 +144,7 @@ footer:hover {
 }
 
 .error-message {
-    color: darkred;
+    color: #F9D7D7;
 }
 
 .info-block > p, h3 {
