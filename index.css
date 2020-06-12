@@ -12,7 +12,7 @@ h1 {
     font-family: "serif";
 }
 
-p, h2, h3 {
+label, h2, h3 {
     font-family: "sans";
 }
 
@@ -36,7 +36,7 @@ img {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     max-width: 500px;
     margin: 30px 15px 0 15px;
     transition-property: box-shadow, color, background-color;
@@ -75,7 +75,13 @@ img {
 }
 
 .select-flight {
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    display: block;
+}
+
+#select-flight {
+    width: 150px;
+    margin: 10px auto 0 auto;
 }
 
 
