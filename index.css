@@ -21,8 +21,13 @@ iframe {
     border: black 2px solid;
 }
 
-h3, p, img, iframe {
+p, img, iframe {
     margin: 0 auto 15px auto;
+    font-family: "serif";   
+}
+
+p {
+    padding: 0 20px 0 20px;
 }
 
 img {

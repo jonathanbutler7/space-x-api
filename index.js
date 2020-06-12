@@ -26,21 +26,30 @@ function backgroundImage(result) {
     appendFooter(result)
 }
 
-//Take title and photographer name from NASA fetch and set footer
-//If no photographer name, leave it out
+//Take result from NASA fetch and run append functions
 function appendFooter(result) {
     let title = result.title
     let photographer = result.copyright
     if (photographer === undefined) {
-        $('footer').append(
-            `<p><i>${title}</i> provided by <a href="http://apod.nasa.gov/apod/astropix.html" target=blank>Astronomy Picture of the Day</a></p>`
-        )
+        appendFooterWithoutPhotographer(title)
     } else {
+        appendFooterWithPhotographer(title, photographer)
+    }
+}
+
+//Display footer if Photographer's name is not listed in API (to avoid webpage displaying "null")
+function appendFooterWithoutPhotographer(title) {
+    $('footer').append(
+        `<p><i>${title}</i> provided by <a href="http://apod.nasa.gov/apod/astropix.html" target=blank>Astronomy Picture of the Day</a></p>`
+    )
+}
+
+//Display footer if Photographer's name is included
+function appendFooterWithPhotographer(title, photographer) {
     $('footer').append(
         `<p>"${title}" by ${photographer}, provided by <a href="http://apod.nasa.gov/apod/astropix.html" target=blank>Astronomy Picture of the Day</a></p>`
     )
-    }
-}
+ }
 
 //Create list upon page load as a result of Space X fetch
 function populateList(result) {
@@ -52,11 +61,10 @@ function populateList(result) {
     getFlightStats(dataSet)
 }
 
-//Define variables for results card. Some of the API is incomplete. 
+//Define variables for results card
 function getFlightStats(dataSet) {
     $('#select-flight').change(function() {
         let flightSelect = $('#select-flight').val()
-
         let flightInfo = dataSet[flightSelect - 1]
         let flightNum = flightInfo.flight_number
         let missionName = flightInfo.mission_name
@@ -68,32 +76,43 @@ function getFlightStats(dataSet) {
         let location = flightInfo.launch_site.site_name_long
         
         if (flightSelect < 96) {
-        html = `
-            <h2>Flight no. ${flightNum}</h2>
-            <div class="info-block">
-            <h3>Mission: ${missionName}</h3>
-            <p>Rocket name: ${rocketName}</p>
-            <p>Mission success: ${launchSuccess}</p>
-            </div>
-            <img src="${image}" alt="${image}">
-            <p>Location: ${location}</p>
-            `
-        $('#card-video').attr('src', videoId);
-        $('#card-info').empty()
-        $('#card-video').removeClass('hidden')
+            displayAllFlightInfo(flightNum, missionName, rocketName, launchSuccess, image, location, videoId)
         } else if (flightSelect >= 96)  {
-            html = `
-            <h2>Flight no. ${flightNum}</h2>
-            <h3>Mission: ${missionName}</h3>
-            <p>Rocket name: ${rocketName}</p>
-            <p class="error-message">Complete info not available</p>
-            `
-            $('#card-info').empty()
-            $('#card-video').addClass('hidden')
+            dislpayLimitedFlightInfo(flightNum, missionName, rocketName)
         }
+
         $('.results-container').removeClass('hidden')
         $('#card-info').append(html)
     });
+}
+
+//Display results card including all available information
+function displayAllFlightInfo(flightNum, missionName, rocketName, launchSuccess, image, location, videoId) {
+    html = `
+        <h2>Flight no. ${flightNum}</h2>
+        <div class="info-block">
+        <h3>Mission: ${missionName}</h3>
+        <p>Rocket name: ${rocketName}</p>
+        <p>Mission success: ${launchSuccess}</p>
+        </div>
+        <img src="${image}" alt="${image}">
+        <p>Location: ${location}</p>
+        `
+    $('#card-video').attr('src', videoId);
+    $('#card-info').empty()
+    $('#card-video').removeClass('hidden')
+}
+
+//Display results card with reduced information, to avoid results card displaying "null" for values that don't exist within the API
+function dislpayLimitedFlightInfo(flightNum, missionName, rocketName) {
+    html = `
+        <h2>Flight no. ${flightNum}</h2>
+        <h3>Mission: ${missionName}</h3>
+        <p>Rocket name: ${rocketName}</p>
+        <p class="error-message">Complete info not available</p>
+        `
+    $('#card-info').empty()
+    $('#card-video').addClass('hidden')       
 }
 
 $(getList())
