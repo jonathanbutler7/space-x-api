@@ -39,16 +39,17 @@ img {
     padding-bottom: 25px;
     max-width: 500px;
     margin: 30px 15px 0 15px;
-    transition-property: box-shadow, color;
-    background-color: darkgray;
+    transition-property: box-shadow, color, background-color;
     transition-duration: .5s;
     transition-timing-function: linear;
-    color: white;
+    background-color: #595959;
+    color: #E0E0E0;
 }
 
 .start-card:hover {
-    box-shadow: 0 5px 15px -5px gainsboro; 
-    color: black;
+    box-shadow: 0 5px 15px -5px #E0E0E0; 
+    background-color: #757575;
+    color: #FFFFFF;
 }
 
 .results-card {
@@ -60,17 +61,17 @@ img {
     max-width: 500px;
     margin: 30px 15px 30px 15px;
     margin-bottom: 100px;
-    background-color: darkgray;
-    transition-property: box-shadow, color;
+    background-color: #595959;
+    transition-property: box-shadow, color, background-color;
     transition-duration: .5s;
-    background-color: darkgray;
     transition-timing-function: linear;
-    color: white;
+    color: #E0E0E0;
 }
 
 .results-card:hover {
-    box-shadow: 0 5px 15px -5px gainsboro; 
-    color: black;
+    box-shadow: 0 5px 15px -5px #E0E0E0; 
+    background-color: #757575;
+    color: #FFFFFF;
 }
 
 .select-flight {
@@ -87,21 +88,22 @@ img {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: darkgray;
-    color: white;
+    background-color: #595959;
+    color: #E0E0E0;
     text-align: center;
     border-top: 2px black solid;
     transition-property: color;
     transition-duration: .5s;
+    transition-property: box-shadow, color, background-color;
 }
 
 a:hover {
     text-decoration: none;
-    color: black;
+    color: #F8C4C4;
 }
 
 a:visited {
-    color: black;
+    color: #D6E4FA;
 }
 
 .footer > p {
@@ -110,7 +112,8 @@ a:visited {
 }
 
 footer:hover {
-    color: black;
+    background-color: #757575;
+    color: #FFFFFF;
 }
 
 @media all and (min-width: 500px) {
