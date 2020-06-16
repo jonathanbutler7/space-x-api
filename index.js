@@ -15,13 +15,21 @@ function fetchNasaImage() {
 
 //Take image url from NASA fetch and set it as background image
 function backgroundImage(result) {
-    let picURL = result.url
+//    let picURL = result.url
+
+   if (result.url.includes('youtube')) {
+        picURL = "space-photo.jpg"    
+    } else {
+        picURL = result.url
+    }
+
     
     let nasaImage = `background-image: url(${picURL});
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1800px;
     background-position-y: inherit;`
+    
     $('#body').attr('style', nasaImage)
     appendFooter(result)
 }
