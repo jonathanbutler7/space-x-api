@@ -23,12 +23,13 @@ function backgroundImage(result) {
         picURL = result.url
     }
 
-    
-    let nasaImage = `background-image: url(${picURL});
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 1800px;
-    background-position-y: inherit;`
+    // let nasaImage = `background-image: url(${picURL});
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
+    // background-position-y: inherit;`
+
+    let nasaImage = `background: url(${picURL}) no-repeat center center fixed; background-size: cover`
     
     $('#body').attr('style', nasaImage)
     appendFooter(result)
