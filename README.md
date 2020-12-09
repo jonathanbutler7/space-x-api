@@ -1,6 +1,6 @@
 ## What is this?
 
-This app uses jQuery to consume the Space X and NASA APIs.\
+This app uses jQuery to consume the Space X and NASA APIs.
 
 It may be viewed live here: https://jonathanbutler7.github.io/space-x-api/
 
