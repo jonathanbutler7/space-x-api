@@ -1,3 +1,5 @@
+![alt text](https://storage.googleapis.com/portfolio-website-content/space-x.png)
+
 ## What is this?
 
 This app uses jQuery to consume the Space X and NASA APIs.
